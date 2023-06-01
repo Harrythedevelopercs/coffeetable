@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "945442882900",
+    "project_id": "coffeewithfarooq-9a91f",
+    "storage_bucket": "coffeewithfarooq-9a91f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945442882900:android:5f1473e13aeea4498e34c1",
+        "android_client_info": {
+          "package_name": "com.example.fastfodd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz02VQGNc5md-Dji79WFbYgPzfBn0L3n8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
