@@ -40,16 +40,23 @@ TopArea(context){
           },
           itemBuilder: (context) {
             return [
-              PopupMenuItem(
+              const PopupMenuItem(
                 value: 0,
                 child: Text("Profile"),
               ),
-              PopupMenuItem(
+              const PopupMenuItem(
                 value: 1,
                 child: Text("Settings"),
               ),
-
-              PopupMenuItem(
+              const PopupMenuItem(
+                value: 3,
+                child: Text("Cart"),
+              ),
+              const PopupMenuItem(
+                value: 5,
+                child: Text("Orders"),
+              ),
+              const PopupMenuItem(
                 value: 2,
                 child: Text("Logout"),
               )

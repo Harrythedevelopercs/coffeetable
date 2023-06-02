@@ -32,36 +32,31 @@ class MenuScreen extends StatelessWidget {
                 child: TopArea(context),
               ),
               Expanded(
-                  child: SingleChildScrollView(
-                    child: Container(
-                      padding: const EdgeInsets.only(left: 20,right: 20),
-                      width: double.infinity,
+                  child: Container(
+                    padding: const EdgeInsets.only(left: 20,right: 20),
+                    width: double.infinity,
                 decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(30.0))),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          Text("Time For Coffee",style: GoogleFonts.rubik(
-                            fontSize: 18,
-                            color: Appinformation.baseColor,
-                              fontWeight: FontWeight.w600
-                          ),),
-                          const SizedBox(
-                            height: 30,
-                          ),
-
-                         AddProductScreen(),
-
-
-                        ],
-                      )
-              ),
-                  ))
+                    color: Colors.white,
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(30.0))),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Text("Time For Coffee",style: GoogleFonts.rubik(
+                          fontSize: 18,
+                          color: Appinformation.baseColor,
+                            fontWeight: FontWeight.w600
+                        ),),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                       AddProductScreen(),
+                      ],
+                    )
+              ))
             ],
           ),
         ));

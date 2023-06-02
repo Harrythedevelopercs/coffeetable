@@ -71,6 +71,13 @@ class FirebaseController {
     }
   }
 
+  static serachProductForSingleProduct(id) {
+      return FirebaseFirestore.instance
+        .collection('products')
+        .doc(id)
+        .get();
+  }
+
   static showMyDialogwhenregisterisgivenerror(
       context, String title, String errorMessage) {
     return showDialog<void>(
