@@ -8,6 +8,8 @@ import '../screens/menu.dart';
 class FirebaseController {
 
 
+
+
   static getallProducts() async {
     CollectionReference products =
         FirebaseFirestore.instance.collection('products');
@@ -78,6 +80,26 @@ class FirebaseController {
         .get();
   }
 
+
+  static addtoCartFire(String title,int quantity,String size,int total){
+    final user = FirebaseAuth.instance.currentUser;
+    var uid;
+    if (user != null) {
+      uid = user.uid;
+    }
+    CollectionReference cart = FirebaseFirestore.instance.collection('cart');
+
+    return cart
+        .add({
+          'products':{
+            'title': title,
+            'quantity': quantity,
+            'size': size,
+            'total': total
+          }
+    }).then((value) => print("Product Added"))
+        .catchError((error) => print("Failed to add user: $error"));
+  }
   static showMyDialogwhenregisterisgivenerror(
       context, String title, String errorMessage) {
     return showDialog<void>(
