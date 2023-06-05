@@ -20,6 +20,17 @@ class _SingleProductState extends State<SingleProduct> {
   int quantity = 1;
 
   var size = "s";
+  int total = 0;
+
+
+  _setPrice(int setPrice){
+    initState() {
+      super.initState();
+      price = setPrice;
+
+    };
+    return price;
+  }
 
 
   @override
@@ -27,15 +38,14 @@ class _SingleProductState extends State<SingleProduct> {
     var results =
         FirebaseController.serachProductForSingleProduct(widget.recordObject);
 
+
     return Scaffold(
       backgroundColor: Appinformation.baseColor,
       body: FutureBuilder(
           future: results,
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
-              price = snapshot
-                  .data['small_price'];
-              int total = quantity * price;
+             _setPrice(snapshot.data['small_price']);
               return SingleChildScrollView(
                 child: Container(
                   width: double.infinity,
@@ -105,10 +115,7 @@ class _SingleProductState extends State<SingleProduct> {
                                                 ),
                                                 onTap: () {
                                                   setState(() {
-                                                    price = snapshot
-                                                        .data['small_price'];
-                                                    image_size_w = 100;
-                                                    image_size_h = 100;
+                                                    price = snapshot.data['small_price'];
                                                     size = "s";
                                                   });
                                                 },
@@ -126,10 +133,7 @@ class _SingleProductState extends State<SingleProduct> {
                                                 ),
                                                 onTap: () {
                                                   setState(() {
-                                                    price = snapshot
-                                                        .data['med_price'];
-                                                    image_size_w = 150;
-                                                    image_size_h = 150;
+                                                    price = snapshot.data['med_price'];
                                                      size = "m";
                                                   });
                                                 },
@@ -147,10 +151,7 @@ class _SingleProductState extends State<SingleProduct> {
                                                 ),
                                                 onTap: () {
                                                   setState(() {
-                                                    price = snapshot
-                                                        .data['large_price'];
-                                                    image_size_w = 200;
-                                                    image_size_h = 200;
+                                                    price = snapshot.data['large_price'];
                                                     size = "l";
                                                   });
                                                 },
@@ -162,6 +163,11 @@ class _SingleProductState extends State<SingleProduct> {
                                             quarterTurns: 3,
                                             child: ElevatedButton(
                                               onPressed: () {
+
+                                              setState(() {
+                                                total = quantity * price;
+                                              });
+
                                                 String title = snapshot.data['title'];
 
                                                   var result =  FirebaseController.addtoCartFire(title,quantity,size,total);
@@ -232,7 +238,7 @@ class _SingleProductState extends State<SingleProduct> {
                                             bottom: 5,
                                             top: 5),
                                         child: Text(
-                                          "PKR ${(price != 0) ? price : price = snapshot.data['small_price']}",
+                                          "PKR ${(price != 0)? price : snapshot.data['small_price']}",
                                           style: GoogleFonts.rubik(
                                               fontSize: 20,
                                               fontWeight: FontWeight.w500,
@@ -332,3 +338,4 @@ checkdatabase(id) async {
   var results = await FirebaseController.serachProductForSingleProduct(id);
   return results;
 }
+

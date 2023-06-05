@@ -1,4 +1,5 @@
 import 'package:fastfodd/screens/addproducts.dart';
+import 'package:fastfodd/screens/cart.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,6 +37,12 @@ TopArea(context){
           onSelected: (value){
             if(value == 2){
               FirebaseController.firebaseLogout(context);
+            }
+            else if(value == 3){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CartScreen()),
+              );
             }
           },
           itemBuilder: (context) {

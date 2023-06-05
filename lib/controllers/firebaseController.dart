@@ -1,3 +1,4 @@
+import 'package:fastfodd/controllers/productcart.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -82,23 +83,15 @@ class FirebaseController {
 
 
   static addtoCartFire(String title,int quantity,String size,int total){
-    final user = FirebaseAuth.instance.currentUser;
-    var uid;
-    if (user != null) {
-      uid = user.uid;
-    }
-    CollectionReference cart = FirebaseFirestore.instance.collection('cart');
-
-    return cart
-        .add({
-          'products':{
-            'title': title,
-            'quantity': quantity,
-            'size': size,
-            'total': total
-          }
-    }).then((value) => print("Product Added"))
-        .catchError((error) => print("Failed to add user: $error"));
+    double productPrice = total / quantity  ;
+    AddtoCart.productCart.add({
+      'title': title,
+      'productPrice': productPrice,
+      'quantity': quantity,
+      'size': size,
+      'total': total
+    });
+    return AddtoCart.returnCart();
   }
   static showMyDialogwhenregisterisgivenerror(
       context, String title, String errorMessage) {
